@@ -19,7 +19,6 @@ struct WelcomePage: View {
                     .font(.system(size: 70,
                                   weight: .bold,
                                   design: .rounded))
-                    .foregroundStyle(.white)
                 
             }
             
@@ -28,6 +27,7 @@ struct WelcomePage: View {
                 .fontWeight(.semibold)
                 .fontDesign(.rounded)
                 .padding(.top)
+                .foregroundStyle(.white)
             
             Text("Description here. This is the the description of the app.")
                 .font(.title2)
