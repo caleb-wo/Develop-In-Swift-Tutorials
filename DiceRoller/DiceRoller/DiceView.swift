@@ -15,13 +15,15 @@ struct DiceView: View {
         VStack {
             Image(systemName: "die.face.\(pipNumber)")
                 .resizable()
-                .frame(width: 100, height: 100)
+                .frame(maxWidth: 100, maxHeight: 100)
+                .aspectRatio(1, contentMode: .fit)
+                .background(.white).cornerRadius(15)
             
             Button("Roll"){
                 withAnimation {
                     pipNumber = Int.random(in: 1...6)
                 }
-            }.buttonStyle(.bordered)
+            }.buttonStyle(.bordered).tint(.black)
             
         }
     }

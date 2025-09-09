@@ -10,9 +10,10 @@ import SwiftUI
 struct ContentView: View {
     @State private var numberOfDice = 1
     @State private var dividedByZero = false
+    private let maxDieCount = 5
     
     var body: some View {
-        VStack {
+        VStack{
             Text("Dice Roller")
                 .font(.largeTitle
                       .lowercaseSmallCaps()
@@ -25,17 +26,22 @@ struct ContentView: View {
             
             HStack{
                 Spacer()
-                Button("Add Dice"){
-                    numberOfDice += 1
+                Button("Add Dice", systemImage: "plus.circle.fill"){
+                    withAnimation{
+                        numberOfDice += 1
+                    }
                 }
                 .padding()
                 .background(.green ,
                             in :RoundedRectangle(cornerRadius: 10))
                 .foregroundStyle(.white)
+                .disabled(numberOfDice == maxDieCount)
                 
-                Button("Remove Dice"){
+                Button("Remove Dice", systemImage: "minus.circle.fill"){
                     if (numberOfDice > 1){
-                        numberOfDice -= 1
+                        withAnimation{
+                            numberOfDice -= 1
+                        }
                     } else{
                         dividedByZero = true
                     }
@@ -46,6 +52,8 @@ struct ContentView: View {
                 .foregroundStyle(.white)
                 Spacer()
             }
+            .labelStyle(.iconOnly)
+            .font(.title)
         }
         .padding()
         .alert("Can't Remove",
@@ -54,8 +62,9 @@ struct ContentView: View {
             } message: {
                 Text("You must have one die.")
             }
-        
-    }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.appBackground)
+}
 }
 
 #Preview {
