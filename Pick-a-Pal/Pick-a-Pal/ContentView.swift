@@ -8,13 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var names :[String] = [
+        "Caleb",
+        "Mary",
+        "Matthew",
+        "Ethan",
+    ]
+    @State private var nameToAdd = ""
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
+            List{
+                
+                ForEach( names,
+                         id: \.description
+                ){ name in
+                    Text(name)
+                }
+                
+                TextField("Add name", text: $nameToAdd)
+                    .autocorrectionDisabled()
+                    .onSubmit{
+                        if nameToAdd != ""{
+                            names.append(nameToAdd)
+                            nameToAdd = ""
+                        }
+                    }
+                
+            } // List
+        } // VStack
         .padding()
     }
 }
