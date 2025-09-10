@@ -8,16 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var names :[String] = [
-        "Caleb",
-        "Mary",
-        "Matthew",
-        "Ethan",
-    ]
+    @State private var names :[String] = []
     @State private var nameToAdd = ""
-    
+    @State private var pickedName = ""
+    @State private var shouldRemovePickedName = false
+
     var body: some View {
-        VStack {
+        VStack{
+            VStack(spacing: 10){
+                Image(systemName: "person.3.sequence.fill")
+                    .foregroundStyle(.tint)
+                    .font(.title2)
+                    .symbolRenderingMode(.hierarchical)
+                Text("Pick-a-Pal")
+                    .font(.title)
+            }
+            
+            
+            Text(pickedName.isEmpty ? " " : pickedName)
+                .font(.title3)
+                .bold()
+                .padding(.vertical, 10)
+                .foregroundStyle(.tint)
+            
             List{
                 
                 ForEach( names,
@@ -25,6 +38,7 @@ struct ContentView: View {
                 ){ name in
                     Text(name)
                 }
+                
                 
                 TextField("Add name", text: $nameToAdd)
                     .autocorrectionDisabled()
@@ -36,6 +50,30 @@ struct ContentView: View {
                     }
                 
             } // List
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            
+            Toggle("Remove when picked", isOn: $shouldRemovePickedName)
+            Button{
+                if let randomName = names.randomElement(){
+                    pickedName = randomName
+                    
+                    if shouldRemovePickedName{
+                        names.removeAll{ name in
+                            name == randomName
+                        }
+                    }
+                    
+                } else{
+                    pickedName = ""
+                }
+            } label:{
+                Text("Pick Random Name")
+                    .padding(.vertical, 8)
+                    .padding(.vertical, 16)
+            }
+            .buttonStyle(.borderedProminent)
+            .font(.title2)
+            
         } // VStack
         .padding()
     }
