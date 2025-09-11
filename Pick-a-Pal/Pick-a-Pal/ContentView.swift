@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var nameToAdd = ""
     @State private var pickedName = ""
     @State private var shouldRemovePickedName = false
+    @State private var showSameNameAlert = false
 
     var body: some View {
         VStack{
@@ -44,13 +45,22 @@ struct ContentView: View {
                     .autocorrectionDisabled()
                     .onSubmit{
                         if nameToAdd != ""{
-                            names.append(nameToAdd)
-                            nameToAdd = ""
+                            if names.contains(nameToAdd){
+                                showSameNameAlert = true
+                                nameToAdd = ""
+                            } else {
+                                names.append(nameToAdd)
+                                nameToAdd = ""
+                            }
                         }
                     }
                 
             } // List
             .clipShape(RoundedRectangle(cornerRadius: 8))
+            .alert("Duplicated name", isPresented: $showSameNameAlert){
+            } message: {
+                Text("Try adding initials.")
+            }
             
             Toggle("Remove when picked", isOn: $shouldRemovePickedName)
             Button{
