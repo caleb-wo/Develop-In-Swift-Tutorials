@@ -1,6 +1,6 @@
 # Description
 
-This project was made out of my excitement to learn Swift/iOS Development and my desire to learn it _fast_. Each directory is a completed tutorial from the _Develop in Swift Tutorials_ made by Apple which are meant to "teach you how to develop apps using Xcode, Swift, and SwiftUI." Although I followed along & regularly asked A.I. to explain things further, _no_ code the project was copied & pasted from it's associated lesson.
+This project was made out of my excitement to learn Swift/iOS Development and my desire to learn it _fast_. Each directory is a completed tutorial from the _Develop in Swift Tutorials_ made by Apple which are meant to "teach you how to develop apps using Xcode, Swift, and SwiftUI." Although I followed along & regularly asked A.I. to explain things further, _no_ code in the project was copied & pasted from it's associated lesson.
 
 ## Intro
 
