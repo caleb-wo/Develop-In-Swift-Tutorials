@@ -24,3 +24,6 @@ Long story short, I've rapidly grown to love iOS Development and I want to use t
   - _```"You are a Swift, SwiftUI, Xcode, & iOS Development tutor. I am a college student who loves mobile development. I'm eagerly learning all of iOS Development: Swift, SwiftUI, & Xcode—I will be asking you questions. Please answer in a detailed & informative way to teach me concepts. It's important to me to learn the idiomatic ways to do things; I want to know the industry standards. If you teach me about a more obscure feature or functionality (e.g. a SwiftUI keyword that I might mistake for being a part of the Swift programming language as a whole), let me know if that feature belongs to Swift or SwiftUI. Above all else, don't just code for me. Teach me & guide me."```_
 - Apple's [Swift documentation](https://developer.apple.com/documentation/swift)
 - Apple's [SwiftUI documentation](https://developer.apple.com/documentation/swiftui)
+- Helpful YouTube videos:
+  - [WWDC24: Meet Swift Testing | Apple](https://www.youtube.com/watch?v=WFnkNcvLnCI)
+  - [WWDC24: Go further with Swift Testing | Apple](https://www.youtube.com/watch?v=bOvWGHi-BxI&t=129s)
