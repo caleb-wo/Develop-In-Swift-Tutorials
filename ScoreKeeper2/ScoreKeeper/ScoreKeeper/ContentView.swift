@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var scoreboard = Scoreboard()
     @State var startingPoints = 0
+    @State var roundCount = 0
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -12,7 +13,8 @@ struct ContentView: View {
                 .padding(.bottom)
             
             SettingsView(startingPoints: $startingPoints,
-                         doesHighestScoreWin: $scoreboard.doesHighScoreWin)
+                         doesHighestScoreWin: $scoreboard.doesHighScoreWin,
+                         roundCount: $roundCount)
             .disabled(scoreboard.state != .setup)
 
             Grid {
@@ -49,30 +51,57 @@ struct ContentView: View {
 
             Spacer()
             
-            
-            HStack{
-                Spacer()
-                switch scoreboard.state {
-                    case .setup:
-                        Button("Start Game", systemImage: "play.fill"){
-                            scoreboard.state = .playing
-                            scoreboard.resetScores(to: startingPoints)
-                        }
-                    case .playing:
-                        Button("End Game", systemImage: "stop.fill"){
-                            scoreboard.state = .gameOver
-                        }
-                    case .gameOver:
-                        Button("Reset Game", systemImage: "arrow.counterclockwise"){
-                            scoreboard.state = .setup
-                        }
+            VStack {
+                if roundCount != 0 && scoreboard.state == .playing{
+                    HStack{
+                        Text("Remaing Rounds: \(roundCount)")
+                            .padding()
+                            .foregroundStyle(.white)
+                            .background(.tint, in: RoundedRectangle(cornerRadius: 10))
+                            .font(.title2)
+                    }
                 }
-                Spacer()
+                HStack{
+                    switch scoreboard.state {
+                        case .setup:
+                            Spacer()
+                            Button("Start Game", systemImage: "play.fill"){
+                                scoreboard.state = .playing
+                                scoreboard.resetScores(to: startingPoints)
+                            }
+                            Spacer()
+                        case .playing:
+                            if roundCount == 0 {
+                                Spacer()
+                                Button("End Game", systemImage: "stop.fill"){
+                                    scoreboard.state = .gameOver
+                                }
+                                Spacer()
+                            } else {
+                                Button("End Game", systemImage: "stop.fill"){
+                                    scoreboard.state = .gameOver
+                                }
+                                Spacer()
+                                Button("Next Round", systemImage: "arrowshape.right.fill"){
+                                    roundCount -= 1
+                                    if roundCount == 0 {
+                                        scoreboard.state = .gameOver
+                                    }
+                                }
+                            }
+                        case .gameOver:
+                            Spacer()
+                            Button("Reset Game", systemImage: "arrow.counterclockwise"){
+                                scoreboard.state = .setup
+                            }
+                            Spacer()
+                    }
+                }
+                .buttonStyle(.bordered)
+                .buttonBorderShape(.capsule)
+                .controlSize(.large)
+                .tint(.blue)
             }
-            .buttonStyle(.bordered)
-            .buttonBorderShape(.capsule)
-            .controlSize(.large)
-            .tint(.blue)
             
         }
         .padding()

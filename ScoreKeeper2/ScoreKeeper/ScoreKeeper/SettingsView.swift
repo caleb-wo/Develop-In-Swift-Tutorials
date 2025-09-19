@@ -10,14 +10,19 @@ import SwiftUI
 struct SettingsView: View {
     @Binding var startingPoints :Int
     @Binding var doesHighestScoreWin :Bool
-
+    @Binding var roundCount :Int
+    @Environment(\.isEnabled) var isEnabled :Bool
+    
     var body: some View {
         VStack(alignment: .leading){
             Text("Game Rules")
                 .font(.headline)
             
             Divider()
-            Picker("Win condietion", selection: $doesHighestScoreWin){
+            Stepper("Rounds: \(roundCount)", value: $roundCount)
+                .opacity(isEnabled ? 1 : 0)
+            
+            Picker("Win condition", selection: $doesHighestScoreWin){
                 Text("Highest Score Wins").tag(true)
                 Text("Lowest Score Wins").tag(false)
             }
@@ -36,5 +41,9 @@ struct SettingsView: View {
 #Preview {
     @Previewable @State var doesHighestScoreWin = true
     @Previewable @State var startingPoints = 10
-    SettingsView(startingPoints: $startingPoints, doesHighestScoreWin: $doesHighestScoreWin)
+    @Previewable @State var roundCount = 0
+    
+    SettingsView(startingPoints: $startingPoints,
+                 doesHighestScoreWin: $doesHighestScoreWin,
+                 roundCount: $roundCount)
 }
