@@ -12,9 +12,12 @@ import SwiftData
 class Friend{
     var name :String
     var birthday :Date
+    var isBirthdayToday: Bool{
+        Calendar.current.isDateInToday(birthday)
+    }
     
-    init(name: String, bday: Date){
+    init(name: String, birthday: Date){
         self.name = name
-        self.birthday = bday
+        self.birthday = birthday
     }
 }
