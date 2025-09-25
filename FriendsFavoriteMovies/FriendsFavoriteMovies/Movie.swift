@@ -8,6 +8,7 @@
 import Foundation
 import SwiftData
 
+@Model
 class Movie{
     var title: String
     var releaseDate: Date

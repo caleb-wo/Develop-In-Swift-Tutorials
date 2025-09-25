@@ -1,0 +1,33 @@
+//
+//  SampleData.swift
+//  FriendsFavoriteMovies
+//
+//  Created by Caleb Wolfe on 9/24/25.
+//
+
+import Foundation
+import SwiftData
+
+@MainActor
+class SampleData{
+    static let shared = SampleData()
+    let modelContainer: ModelContainer
+    
+    var context: ModelContext{
+        modelContainer.mainContext
+    }
+    
+    private init(){
+        let schema = Schema([
+            Friend.self,
+            Movie.self])
+        
+        let modelConfiguation = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
+        
+        do{
+            modelContainer = try ModelContainer(for: schema, configurations: [modelConfiguation])
+        }catch{
+            fatalError("Could not create model container: \(error)")
+        }
+    }
+}
