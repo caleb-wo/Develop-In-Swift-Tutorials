@@ -18,15 +18,10 @@ struct FriendList: View {
                 Text(friend.name)
             }
         }
-        .task{
-            context.insert(Friend(name: "Jason"))
-            context.insert(Friend(name: "Kupu"))
-            context.insert(Friend(name: "Eli"))
-        }
     }
 }
 
 #Preview {
     FriendList()
-        .modelContainer(for: Friend.self, inMemory: true)
+        .modelContainer(SampleData.shared.modelContainer)
 }

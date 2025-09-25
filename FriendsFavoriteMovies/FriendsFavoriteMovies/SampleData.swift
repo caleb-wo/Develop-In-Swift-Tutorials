@@ -23,11 +23,20 @@ class SampleData{
             Movie.self])
         
         let modelConfiguation = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
-        
         do{
             modelContainer = try ModelContainer(for: schema, configurations: [modelConfiguation])
+            
+            insertSampleData()
+            
+            try context.save()
         }catch{
             fatalError("Could not create model container: \(error)")
+        }
+    }
+    
+    private func insertSampleData(){
+        for friend in Friend.sampleData{
+            context.insert(friend)
         }
     }
 }
