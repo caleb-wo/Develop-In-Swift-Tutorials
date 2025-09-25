@@ -17,4 +17,17 @@ class Movie{
         self.title = title
         self.releaseDate = releaseDate
     }
+    
+    static let sampleData = [
+        Movie(title: "Amusing Space Traveler 3",
+              releaseDate: Date(timeIntervalSinceReferenceDate: -402_000_000)),
+        Movie(title: "Epic Movie",
+              releaseDate: Date(timeIntervalSinceReferenceDate: -40_000_000)),
+        Movie(title: "Terminator",
+              releaseDate: Date(timeIntervalSinceReferenceDate: -302_000_000)),
+        Movie(title: "Shrek Versus Godzilla",
+              releaseDate: Date(timeIntervalSinceReferenceDate: -20_000_000)),
+        Movie(title: "Trash Movie",
+              releaseDate: Date(timeIntervalSinceReferenceDate: -82_000_000)),
+    ]
 }
