@@ -29,3 +29,4 @@ Long story short, I've rapidly grown to love iOS Development and I want to use t
   - [WWDC24: Go further with Swift Testing | Apple](https://www.youtube.com/watch?v=bOvWGHi-BxI&t=129s) –> to show me further capabilites.
   - [SwiftUI Stepper Tutorial](https://www.youtube.com/watch?v=PPqyxuAg70U) –> needed a quick refresher.
   - [Xcode 16 Debugging Tutorial for Beginners (2025)](https://www.youtube.com/watch?v=ZJmUeOT6c-Y)
+  - [Sean Allen](https://www.youtube.com/@seanallen) –> Massive number of tutorial videos for Swift, SwiftUI, etc.
