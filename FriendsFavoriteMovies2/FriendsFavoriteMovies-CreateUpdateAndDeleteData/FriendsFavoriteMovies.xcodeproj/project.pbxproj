@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4E27B0422E89F95B00377710 /* FriendDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E27B0412E89F95A00377710 /* FriendDetail.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		4E27B0412E89F95A00377710 /* FriendDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendDetail.swift; sourceTree = "<group>"; };
 		DD405AB12DBA8758007EE460 /* FriendsFavoriteMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendsFavoriteMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -32,6 +37,7 @@
 		DD405AA82DBA8758007EE460 = {
 			isa = PBXGroup;
 			children = (
+				4E27B0412E89F95A00377710 /* FriendDetail.swift */,
 				DD405AB32DBA8758007EE460 /* FriendsFavoriteMovies */,
 				DD405AB22DBA8758007EE460 /* Products */,
 			);
@@ -119,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E27B0422E89F95B00377710 /* FriendDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
